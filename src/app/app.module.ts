@@ -13,12 +13,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './core-en/material-modules';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
+import { CoreGermanComponent } from './core-german/core-german.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CoreEnComponent,
+    CoreGermanComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,9 +33,12 @@ import { HttpClientModule } from '@angular/common/http'
     MatNativeDateModule,
     HttpClientModule,
     RouterModule.forRoot([
-      { path: '', component: CoreEnComponent },
+      { path: '', component: CoreGermanComponent },
+      { path: '\EN', component: CoreEnComponent }
+
     ])
   ],
+
   providers: [{ provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } }],
   bootstrap: [AppComponent]
 })

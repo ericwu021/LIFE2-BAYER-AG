@@ -1,0 +1,245 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons&display=block" rel="stylesheet">
+
+<div fxLayout="row" fxLayoutAlign=" none" >
+
+<mat-grid-list cols="4" rowHeight="40px"  gutterSize = "0px">
+
+  <mat-grid-tile colspan="1" rowspan="2" style="background:#10384F">
+
+    <img [hidden]="this.leadership.length==3" src="..\assets\Leadership.png" alt="Leadership" style="width:40px">
+    <img [hidden]="this.leadership.length!=3" src="..\assets\Leadership_win.png" alt="Leadership" style="width:50px">
+
+  </mat-grid-tile>
+
+  <mat-grid-tile colspan="1" rowspan="2" style="background:linear-gradient(90deg,#10384F,#6A4C72)">
+
+    <img src="..\assets\Bowl_1.png" style="width:70px">
+
+  </mat-grid-tile>
+
+  <mat-grid-tile colspan="2" rowspan="2" style="background:#6A4C72">
+
+      <div class="example-container">
+
+        <div
+          cdkDropList
+          #leadershipList="cdkDropList"
+          [cdkDropListData]="leadership"
+          [cdkDropListConnectedTo]="[integrityList,flexibilityList,efficiencyList,todoList]"
+          class="example-list"
+          (cdkDropListDropped)="drop($event)"
+          [cdkDropListEnterPredicate]="leadershipPredicate"
+          style="background:transparent;border-color:#876f8e;width: 200px;">
+          <div
+              class="example-box"
+
+              *ngFor="let item of leadership"
+              [cdkDragData]="item.id"
+              cdkDrag>{{item.content}}</div>
+        </div>
+
+      </div>
+
+  </mat-grid-tile>
+
+  <mat-grid-tile colspan="1" rowspan="2" style="background:#10384F">
+
+    <img [hidden]="this.integrity.length==3" src="..\assets\Integrity.png" alt="Integrity" style="width:40px">
+    <img [hidden]="this.integrity.length!=3" src="..\assets\Integrity_win.png" alt="Integrity" style="width:50px">
+
+  </mat-grid-tile>
+
+  <mat-grid-tile colspan="1" rowspan="2" style="background:linear-gradient(90deg,#10384F,#D30F4B)">
+
+      <img src="..\assets\Bowl_2.png" style="width:70px">
+
+  </mat-grid-tile>
+
+  <mat-grid-tile colspan="2" rowspan="2" style="background:#D30F4B">
+
+    <div class="example-container">
+
+      <div
+        cdkDropList
+        #integrityList="cdkDropList"
+        [cdkDropListData]="integrity"
+        [cdkDropListConnectedTo]="[leadershipList,flexibilityList,efficiencyList,todoList]"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)"
+        [cdkDropListEnterPredicate]="integrityPredicate"
+        style="background:transparent;border-color:#db3e6e;width: 200px;">
+        <div class="example-box"
+             *ngFor="let item of integrity"
+             cdkDrag
+             [cdkDragData]="item.id">{{item.content}}</div>
+      </div>
+    </div>
+
+
+  </mat-grid-tile>
+
+  <mat-grid-tile colspan="1" rowspan="2" style="background:#10384F">
+
+    <img [hidden]="this.flexibility.length==3" src="..\assets\Flexibility.png" alt="Flexibility" style="width:40px">
+    <img [hidden]="this.flexibility.length!=3" src="..\assets\Flexibility_win.png" alt="Flexibility" style="width:50px">
+
+  </mat-grid-tile>
+
+  <mat-grid-tile colspan="1" rowspan="2" style="background:linear-gradient(90deg,#10384F,#00BCFF)">
+
+      <img src="..\assets\Bowl_3.png" style="width:70px">
+
+  </mat-grid-tile>
+
+  <mat-grid-tile colspan="2" rowspan="2" style="background:#00BCFF;width: 200px;">
+
+    <div class="example-container">
+
+      <div
+        cdkDropList
+        #flexibilityList="cdkDropList"
+        [cdkDropListData]="flexibility"
+        [cdkDropListConnectedTo]="[leadershipList,integrityList,efficiencyList,todoList]"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)"
+        [cdkDropListEnterPredicate]="flexibilityPredicate"
+        style="background:transparent;border-color:#32c9ff;width: 200px;">
+
+        <div class="example-box"
+             *ngFor="let item of flexibility"
+             cdkDrag
+             [cdkDragData]="item.id">{{item.content}}</div>
+      </div>
+
+    </div>
+
+  </mat-grid-tile>
+
+  <mat-grid-tile colspan="1" rowspan="2" style="background:#10384F">
+
+    <img [hidden]="this.efficiency.length==3" src="..\assets\Efficiency.png" alt="Efficiency" style="width:40px">
+    <img [hidden]="this.efficiency.length!=3" src="..\assets\Efficiency_win.png" alt="Efficiency" style="width:50px">
+
+  </mat-grid-tile>
+
+
+  <mat-grid-tile colspan="1" rowspan="2" style="background:linear-gradient(90deg,#10384F,#66B512)">
+
+      <img src="..\assets\Bowl_4.png" style="width:70px">
+
+  </mat-grid-tile>
+
+  <mat-grid-tile colspan="2" rowspan="2" style="background:#66B512">
+
+      <div class="example-container">
+
+      <div
+        cdkDropList
+        #efficiencyList="cdkDropList"
+        [cdkDropListData]="efficiency"
+        [cdkDropListConnectedTo]="[leadershipList,integrityList,flexibilityList,todoList]"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)"
+        [cdkDropListEnterPredicate]="efficiencyPredicate"
+        style="background:transparent;border-color:#84c341;width: 200px;">
+
+        <div class="example-box"
+             *ngFor="let item of efficiency"
+             cdkDrag
+             [cdkDragData]="item.id">{{item.content}}</div>
+      </div>
+
+    </div>
+
+  </mat-grid-tile>
+
+
+    <mat-grid-tile
+      [hidden]="this.todo.length==0"
+      colspan="4" rowspan="6" style="background:linear-gradient(90deg,#10384F,#00BCFF, #89D329);">
+
+
+    <mat-card *ngIf="this.todo.length==0 && this.rank_status == 1"
+              style="background:#624963;
+              width:300px;
+              position:absolute;
+              z-index:6">
+      <h5 style="color:white">Um zu schauen wie Sie im Vergleich zu Ihren Kolleginnen und Kollegen abgeschnitten haben, fügen Sie Ihre CWID ein </h5>
+      <input [(ngModel)]="timebackend.cwid" placeholder="CWID">
+      <button (click)=getrank()>Platz</button>
+    </mat-card>
+
+    <mat-card *ngIf="this.todo.length==0 && this.rank_status == 0"
+              style="background:#624963;width=800px;
+              position:absolute;
+              z-index:5">
+
+      <h5 style="color:white">Vielen Dank für Ihre Teilnahme am Spiel LIFE 2.0！<br>( Die Rangliste führt Ihr jeweils bestes Ergebnis auf )</h5>
+      <table>
+        <col width="50px">
+        <col width="150px">
+        <col width="150px">
+
+          <tr>
+              <th *ngFor="let column of this.headers_table" style="text-align:center;color:white;font-size:12px">
+                  {{column}}
+              </th>
+          </tr>
+
+          <tr *ngFor="let row of this.rankbackend">
+              <td *ngFor="let col of this.headers" style="text-align:center;color:white;font-size:12px">
+                  {{row[col]}}
+              </td>
+          </tr>
+      </table>
+
+    </mat-card>
+
+
+    <div class="example-container">
+      <div
+        cdkDropList
+        #todoList="cdkDropList"
+        [cdkDropListData]="todo"
+        [cdkDropListConnectedTo]="[leadershipList,integrityList,flexibilityList,efficiencyList]"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)"
+        [cdkDropListEnterPredicate]="noReturnPredicate"
+
+        style="background:transparent;
+              border-color:transparent;
+              position:absolute;
+              top:20px;
+              width: 405px;
+              height:240px;
+              z-index:2">
+        <div class="example-box"
+             *ngFor="let item of todo"
+             cdkDrag
+             [cdkDragData]="item.id"
+             [hidden]="this.todo.length==0">{{item.content}}</div>
+      </div>
+    </div>
+
+  </mat-grid-tile>
+
+  <mat-grid-tile colspan="4" rowspan="1" rowHeight="45px" style="background:white;">
+
+    <mat-progress-bar
+      mode="determinate"
+      value="{{(12 - this.todo.length) * 8.5}}"
+      color="#10384F"
+      style="height:50px ;color:linear-gradient(90deg,#10384F,#00BCFF, #89D329)"></mat-progress-bar>
+
+  </mat-grid-tile>
+
+  <mat-grid-tile colspan="4" rowspan="1" style="background:white">
+
+
+      <h5 style="color:black;">Copyright © Bayer ConsumerHealth China 2020 </h5>
+
+  </mat-grid-tile>
+
+</mat-grid-list>
+
+</div>

@@ -1,4 +1,4 @@
-import { Component, OnInit,Inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem, CdkDrag } from '@angular/cdk/drag-drop';
 import { MatDialog,MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Input } from '@angular/core';
@@ -8,35 +8,36 @@ import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-core-en',
-  templateUrl: './core-en.component.html',
-  styleUrls: ['./core-en.component.css']
+  selector: 'app-core-german',
+  templateUrl: './core-german.component.html',
+  styleUrls: ['./core-german.component.css']
 })
-export class CoreEnComponent implements OnInit {
+export class CoreGermanComponent implements OnInit {
 
     public cwid:string;
     rank_status:number;
-    language_selection = 1;
+    language_selection = 0;
     timebackend : Time_backend[] = [];
     rankbackend : Rank_backend[] = [];
 
     headers = ["RANK","CWID","SECONDS"]
+    headers_table = ["Platz","CWID","Sekunden"]
 
     backend_rank_url : string = "https://life2-international-backend.azurewebsites.net/rank";
     backend_url : string = "https://life2-international-backend.azurewebsites.net/get-time";
 
-    id_1_list = ["🥢 Den Willen zum Erfolg leben", "🥢 Play to win"];
-    id_2_list = ["🥢 Sinnstiftend führen", "🥢 Lead with purpose"];
-    id_3_list = ["🥢 Sich und andere weiterentwicklen", "🥢 Grow yourself and others"];
-    id_4_list = ["🥢 Nachhaltig handeln und Vorbild sein", "🥢 Act sustainably and be a role model"];
-    id_5_list = ["🥢 Vertrauen aufbauen und Inklusion leben", "🥢 Build trust and be inclusive"];
-    id_6_list = ["🥢 Zusammenarbeiten und Verbindungen schaffen", "🥢 Collaborate and connect"];
-    id_7_list = ["🥢 Gemeinsam mit Kunden Wert schaffen", "🥢 Create value with the customer"];
-    id_8_list = ["🥢 Innovativ sein und experementieren", "🥢 Innovate and experiment"];
-    id_9_list = ["🥢 Digitalisierung stärken", "🥢 Go digital"];
-    id_10_list = ["🥢 Verantwortung übernehmen", "🥢 Be accountable"];
-    id_11_list = ["🥢 Schnell und pragmatisch handeln", "🥢 Be lean and fast"];
-    id_12_list = ["🥢 Mutig sein und andere befähigen", "🥢 Be courageous and empower others"];
+    id_1_list : string = "🥢 Den Willen zum Erfolg leben";
+    id_2_list : string = "🥢 Sinnstiftend führen";
+    id_3_list : string = "🥢 Sich und andere weiterentwicklen";
+    id_4_list : string = "🥢 Nachhaltig handeln und Vorbild sein";
+    id_5_list : string = "🥢 Vertrauen aufbauen und Inklusion leben";
+    id_6_list : string = "🥢 Zusammenarbeiten und Verbindungen schaffen";
+    id_7_list : string = "🥢 Gemeinsam mit Kunden Wert schaffen";
+    id_8_list : string = "🥢 Innovativ sein und experementieren";
+    id_9_list : string = "🥢 Digitalisierung stärken";
+    id_10_list : string = "🥢 Verantwortung übernehmen";
+    id_11_list : string = "🥢 Schnell und pragmatisch handeln";
+    id_12_list : string = "🥢 Mutig sein und andere befähigen";
 
     leadership = [];
 
@@ -46,18 +47,18 @@ export class CoreEnComponent implements OnInit {
 
     efficiency = [];
 
-    todo = [{id:12,content:this.id_12_list[this.language_selection]},
-            {id:3,content:this.id_3_list[this.language_selection]},
-            {id:9,content:this.id_9_list[this.language_selection]},
-            {id:2,content:this.id_2_list[this.language_selection]},
-            {id:5,content:this.id_5_list[this.language_selection]},
-            {id:8,content:this.id_8_list[this.language_selection]},
-            {id:6,content:this.id_6_list[this.language_selection]},
-            {id:11,content:this.id_11_list[this.language_selection]},
-            {id:1,content:this.id_1_list[this.language_selection]},
-            {id:4,content:this.id_4_list[Number(this.language_selection)]},
-            {id:7,content:this.id_7_list[this.language_selection]},
-            {id:10,content:this.id_10_list[this.language_selection]}];
+    todo = [{id:12,content:this.id_12_list},
+            {id:3,content:this.id_3_list},
+            {id:9,content:this.id_9_list},
+            {id:2,content:this.id_2_list},
+            {id:5,content:this.id_5_list},
+            {id:8,content:this.id_8_list},
+            {id:6,content:this.id_6_list},
+            {id:11,content:this.id_11_list},
+            {id:1,content:this.id_1_list},
+            {id:4,content:this.id_4_list},
+            {id:7,content:this.id_7_list},
+            {id:10,content:this.id_10_list}];
 
     drop(event: CdkDragDrop<number[]>) {
       if (event.previousContainer === event.container) {
