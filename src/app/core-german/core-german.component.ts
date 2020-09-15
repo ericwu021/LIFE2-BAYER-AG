@@ -23,8 +23,8 @@ export class CoreGermanComponent implements OnInit {
     headers = ["RANK","CWID","SECONDS"]
     headers_table = ["Platz","CWID","Sekunden"]
 
-    backend_rank_url : string = "https://life2-international-backend.azurewebsites.net/rank";
-    backend_url : string = "https://life2-international-backend.azurewebsites.net/get-time";
+    backend_rank_url : string = "https://life2-bag-backend.azurewebsites.net/rank";
+    backend_url : string = "https://life2-bag-backend.azurewebsites.net/get-time";
 
     id_1_list : string = "🥢 Den Willen zum Erfolg leben";
     id_2_list : string = "🥢 Sinnstiftend führen";

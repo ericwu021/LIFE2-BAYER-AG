@@ -22,8 +22,8 @@ export class CoreEnComponent implements OnInit {
 
     headers = ["RANK","CWID","SECONDS"]
 
-    backend_rank_url : string = "https://life2-international-backend.azurewebsites.net/rank";
-    backend_url : string = "https://life2-international-backend.azurewebsites.net/get-time";
+    backend_rank_url : string = "https://life2-bag-backend.azurewebsites.net/rank";
+    backend_url : string = "https://life2-bag-backend.azurewebsites.net/get-time";
 
     id_1_list = ["🥢 Den Willen zum Erfolg leben", "🥢 Play to win"];
     id_2_list = ["🥢 Sinnstiftend führen", "🥢 Lead with purpose"];
